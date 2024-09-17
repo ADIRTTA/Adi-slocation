@@ -1,5 +1,6 @@
 import requests
 from colorama import Fore, Style, init
+import socket
 
 # Initialize colorama
 init(autoreset=True)
@@ -35,13 +36,22 @@ def get_location_from_ip(ip):
                 "ISP": response['isp'],
                 "Org": response['org'],
                 "AS": response['as'],
-                "Google Maps": f"https://www.google.com/maps/place/{response['lat']}+{response['lon']}"
+                "Google Maps": f"https://www.google.com/maps/place/{response['lat']}+{response['lon']}",
+                "Website": get_website_from_ip(ip)  # New feature: website name
             }
             return details
         else:
             return {"Status": "Location not found"}
     except requests.RequestException:
         return {"Status": "Error fetching location"}
+
+def get_website_from_ip(ip):
+    try:
+        # Perform reverse DNS lookup to get the website/domain associated with the IP
+        domain = socket.gethostbyaddr(ip)[0]
+        return domain
+    except (socket.herror, socket.gaierror):
+        return "No associated website found"
 
 def track_own_ip():
     try:
@@ -95,6 +105,7 @@ def main():
         print(Fore.CYAN + f"| Org: {location_info['Org']}")
         print(Fore.CYAN + f"| AS: {location_info['AS']}")
         print(Fore.CYAN + f"| Map: {location_info['Google Maps']}")
+        print(Fore.CYAN + f"| Website: {location_info['Website']}")
     else:
         print(Fore.RED + location_info["Status"])
 
