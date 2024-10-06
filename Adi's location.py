@@ -1,9 +1,13 @@
 import requests
 from colorama import Fore, Style, init
 import socket
+import os
 
 # Initialize colorama
 init(autoreset=True)
+
+def clear():
+    os.system('clear')  # Clears the terminal
 
 def ascii_banner():
     banner = """
@@ -65,6 +69,7 @@ def track_own_ip():
         return None
 
 def main():
+    clear()  # Clear the screen before showing the banner
     ascii_banner()
     print(Fore.YELLOW + Style.BRIGHT + "IP Location Finder with Detailed Information")
     print(Fore.BLUE + "1. Track Your Own IP")
