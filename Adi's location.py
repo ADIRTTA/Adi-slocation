@@ -1,118 +1,12 @@
-import requests
-from colorama import Fore, Style, init
-import socket
-import os
+#are you gay🖕💨
 
-# Initialize colorama
-init(autoreset=True)
+import base64
 
-def clear():
-    os.system('clear')  # Clears the terminal
+# Base64 encoded content
+encoded_content = '''aW1wb3J0IHJlcXVlc3RzCmZyb20gY29sb3JhbWEgaW1wb3J0IEZvcmUsIFN0eWxlLCBpbml0CmltcG9ydCBzb2NrZXQKaW1wb3J0IG9zCgojIEluaXRpYWxpemUgY29sb3JhbWEKaW5pdChhdXRvcmVzZXQ9VHJ1ZSkKCmRlZiBjbGVhcigpOgogICAgb3Muc3lzdGVtKCdjbGVhcicpICAjIENsZWFycyB0aGUgdGVybWluYWwKCmRlZiBhc2NpaV9iYW5uZXIoKToKICAgIGJhbm5lciA9ICIiIgogICAgICAgICAgICAgX19fICAgIF9fX18gIF9fX19fX19fICBfX19fX19fX19fX19fX18KICAgICAgICAgICAgLyAgIHwgIC8gX18gXC8gIF8vIF9fIFwvXyAgX18vXyAgX18vICAgfAogICAgICAgICAgIC8gL3wgfCAvIC8gLyAvLyAvLyAvXy8gLyAvIC8gICAvIC8gLyAvfCB8ICAgICAgY29kZSBieSBhZGlydHRhIPCfkoAKICAgICAgICAgIC8gX19fIHwvIC9fLyAvLyAvLyBfLCBfLyAvIC8gICAvIC8gLyBfX18gfCAgICAgICBUSEFOSyBZT1UgRk9SIFVTRSBNWSBUT09M4p2k77iPCiAgICAgICAgIC9fLyAgfF8vX19fX18vX19fL18vIHxffCAvXy8gICAvXy8gL18vICB8X3wgICAgICAgIGRvbid0IGNvcHkgbXkgdG9vbPCfpJcKCiAgICAgICAgICAgICAgICAgICAgSVAgTG9jYXRpb24gRmluZGVyIFRvb2wKICAgICIiIgogICAgcHJpbnQoRm9yZS5CTFVFICsgYmFubmVyKQoKZGVmIGdldF9sb2NhdGlvbl9mcm9tX2lwKGlwKToKICAgIHRyeToKICAgICAgICByZXNwb25zZSA9IHJlcXVlc3RzLmdldChmImh0dHA6Ly9pcC1hcGkuY29tL2pzb24ve2lwfSIpLmpzb24oKQogICAgICAgIGlmIHJlc3BvbnNlWydzdGF0dXMnXSA9PSAnc3VjY2Vzcyc6CiAgICAgICAgICAgIGRldGFpbHMgPSB7CiAgICAgICAgICAgICAgICAiSVAiOiBpcCwKICAgICAgICAgICAgICAgICJTdGF0dXMiOiByZXNwb25zZVsnc3RhdHVzJ10sCiAgICAgICAgICAgICAgICAiQ291bnRyeSI6IHJlc3BvbnNlWydjb3VudHJ5J10sCiAgICAgICAgICAgICAgICAiQ291bnRyeSBDb2RlIjogcmVzcG9uc2VbJ2NvdW50cnlDb2RlJ10sCiAgICAgICAgICAgICAgICAiUmVnaW9uIjogcmVzcG9uc2VbJ3JlZ2lvbiddLAogICAgICAgICAgICAgICAgIlJlZ2lvbiBOYW1lIjogcmVzcG9uc2VbJ3JlZ2lvbk5hbWUnXSwKICAgICAgICAgICAgICAgICJDaXR5IjogcmVzcG9uc2VbJ2NpdHknXSwKICAgICAgICAgICAgICAgICJaSVAiOiByZXNwb25zZVsnemlwJ10sCiAgICAgICAgICAgICAgICAiTGF0IjogcmVzcG9uc2VbJ2xhdCddLAogICAgICAgICAgICAgICAgIkxvbiI6IHJlc3BvbnNlWydsb24nXSwKICAgICAgICAgICAgICAgICJUaW1lem9uZSI6IHJlc3BvbnNlWyd0aW1lem9uZSddLAogICAgICAgICAgICAgICAgIklTUCI6IHJlc3BvbnNlWydpc3AnXSwKICAgICAgICAgICAgICAgICJPcmciOiByZXNwb25zZVsnb3JnJ10sCiAgICAgICAgICAgICAgICAiQVMiOiByZXNwb25zZVsnYXMnXSwKICAgICAgICAgICAgICAgICJHb29nbGUgTWFwcyI6IGYiaHR0cHM6Ly93d3cuZ29vZ2xlLmNvbS9tYXBzL3BsYWNlL3tyZXNwb25zZVsnbGF0J119K3tyZXNwb25zZVsnbG9uJ119IiwKICAgICAgICAgICAgICAgICJXZWJzaXRlIjogZ2V0X3dlYnNpdGVfZnJvbV9pcChpcCkgICMgTmV3IGZlYXR1cmU6IHdlYnNpdGUgbmFtZQogICAgICAgICAgICB9CiAgICAgICAgICAgIHJldHVybiBkZXRhaWxzCiAgICAgICAgZWxzZToKICAgICAgICAgICAgcmV0dXJuIHsiU3RhdHVzIjogIkxvY2F0aW9uIG5vdCBmb3VuZCJ9CiAgICBleGNlcHQgcmVxdWVzdHMuUmVxdWVzdEV4Y2VwdGlvbjoKICAgICAgICByZXR1cm4geyJTdGF0dXMiOiAiRXJyb3IgZmV0Y2hpbmcgbG9jYXRpb24ifQoKZGVmIGdldF93ZWJzaXRlX2Zyb21faXAoaXApOgogICAgdHJ5OgogICAgICAgICMgUGVyZm9ybSByZXZlcnNlIEROUyBsb29rdXAgdG8gZ2V0IHRoZSB3ZWJzaXRlL2RvbWFpbiBhc3NvY2lhdGVkIHdpdGggdGhlIElQCiAgICAgICAgZG9tYWluID0gc29ja2V0LmdldGhvc3RieWFkZHIoaXApWzBdCiAgICAgICAgcmV0dXJuIGRvbWFpbgogICAgZXhjZXB0IChzb2NrZXQuaGVycm9yLCBzb2NrZXQuZ2FpZXJyb3IpOgogICAgICAgIHJldHVybiAiTm8gYXNzb2NpYXRlZCB3ZWJzaXRlIGZvdW5kIgoKZGVmIHRyYWNrX293bl9pcCgpOgogICAgdHJ5OgogICAgICAgICMgVXNpbmcgYW4gZXh0ZXJuYWwgc2VydmljZSB0byBnZXQgdGhlIHVzZXIncyBvd24gcHVibGljIElQIGFkZHJlc3MKICAgICAgICBpcF9yZXNwb25zZSA9IHJlcXVlc3RzLmdldCgiaHR0cHM6Ly9hcGk2NC5pcGlmeS5vcmc/Zm9ybWF0PWpzb24iKS5qc29uKCkKICAgICAgICBpcCA9IGlwX3Jlc3BvbnNlWydpcCddCiAgICAgICAgcHJpbnQoRm9yZS5HUkVFTiArIGYiWW91ciBJUDoge2lwfSIpCiAgICAgICAgcmV0dXJuIGlwCiAgICBleGNlcHQgcmVxdWVzdHMuUmVxdWVzdEV4Y2VwdGlvbjoKICAgICAgICBwcmludChGb3JlLlJFRCArICJFcnJvciBmZXRjaGluZyB5b3VyIElQLiIpCiAgICAgICAgcmV0dXJuIE5vbmUKCmRlZiBtYWluKCk6CiAgICBjbGVhcigpICAjIENsZWFyIHRoZSBzY3JlZW4gYmVmb3JlIHNob3dpbmcgdGhlIGJhbm5lcgogICAgYXNjaWlfYmFubmVyKCkKICAgIHByaW50KEZvcmUuWUVMTE9XICsgU3R5bGUuQlJJR0hUICsgIklQIExvY2F0aW9uIEZpbmRlciB3aXRoIERldGFpbGVkIEluZm9ybWF0aW9uIikKICAgIHByaW50KEZvcmUuQkxVRSArICIxLiBUcmFjayBZb3VyIE93biBJUCIpCiAgICBwcmludChGb3JlLkJMVUUgKyAiMi4gVHJhY2sgVmljdGltJ3MgSVAiKQoKICAgIGNob2ljZSA9IGlucHV0KEZvcmUuUkVEICsgIkNob29zZSBtb2RlICgxLzIpOiAiKQoKICAgIGlmIGNob2ljZSA9PSAnMSc6CiAgICAgICAgIyBUcmFjayB5b3VyIG93biBJUAogICAgICAgIGlwID0gdHJhY2tfb3duX2lwKCkKICAgICAgICBpZiBpcDoKICAgICAgICAgICAgbG9jYXRpb25faW5mbyA9IGdldF9sb2NhdGlvbl9mcm9tX2lwKGlwKQogICAgICAgIGVsc2U6CiAgICAgICAgICAgIHByaW50KEZvcmUuUkVEICsgIlVuYWJsZSB0byBnZXQgeW91ciBJUCBhZGRyZXNzLiIpCiAgICAgICAgICAgIHJldHVybgogICAgZWxpZiBjaG9pY2UgPT0gJzInOgogICAgICAgICMgVHJhY2sgYSB2aWN0aW0ncyBJUAogICAgICAgIGlwID0gaW5wdXQoRm9yZS5HUkVFTiArICJFbnRlciBWaWN0aW0ncyBJUCBhZGRyZXNzOiAiKQogICAgICAgIGxvY2F0aW9uX2luZm8gPSBnZXRfbG9jYXRpb25fZnJvbV9pcChpcCkKICAgIGVsc2U6CiAgICAgICAgcHJpbnQoRm9yZS5SRUQgKyAiSW52YWxpZCBjaG9pY2UhIEV4aXRpbmcuIikKICAgICAgICByZXR1cm4KCiAgICBpZiAiU3RhdHVzIiBpbiBsb2NhdGlvbl9pbmZvIGFuZCBsb2NhdGlvbl9pbmZvWyJTdGF0dXMiXSA9PSAnc3VjY2Vzcyc6CiAgICAgICAgIyBQcmludCBkZXRhaWxlZCBpbmZvcm1hdGlvbgogICAgICAgIHByaW50KEZvcmUuQ1lBTiArIGYifCBJUDoge2xvY2F0aW9uX2luZm9bJ0lQJ119IikKICAgICAgICBwcmludChGb3JlLkNZQU4gKyBmInwgU3RhdHVzOiB7bG9jYXRpb25faW5mb1snU3RhdHVzJ119IikKICAgICAgICBwcmludChGb3JlLkNZQU4gKyBmInwgQ291bnRyeToge2xvY2F0aW9uX2luZm9bJ0NvdW50cnknXX0iKQogICAgICAgIHByaW50KEZvcmUuQ1lBTiArIGYifCBDb3VudHJ5IENvZGU6IHtsb2NhdGlvbl9pbmZvWydDb3VudHJ5IENvZGUnXX0iKQogICAgICAgIHByaW50KEZvcmUuQ1lBTiArIGYifCBSZWdpb246IHtsb2NhdGlvbl9pbmZvWydSZWdpb24nXX0iKQogICAgICAgIHByaW50KEZvcmUuQ1lBTiArIGYifCBSZWdpb24gTmFtZToge2xvY2F0aW9uX2luZm9bJ1JlZ2lvbiBOYW1lJ119IikKICAgICAgICBwcmludChGb3JlLkNZQU4gKyBmInwgQ2l0eToge2xvY2F0aW9uX2luZm9bJ0NpdHknXX0iKQogICAgICAgIHByaW50KEZvcmUuQ1lBTiArIGYifCBaSVA6IHtsb2NhdGlvbl9pbmZvWydaSVAnXX0iKQogICAgICAgIHByaW50KEZvcmUuQ1lBTiArIGYifCBMYXQ6IHtsb2NhdGlvbl9pbmZvWydMYXQnXX0iKQogICAgICAgIHByaW50KEZvcmUuQ1lBTiArIGYifCBMb246IHtsb2NhdGlvbl9pbmZvWydMb24nXX0iKQogICAgICAgIHByaW50KEZvcmUuQ1lBTiArIGYifCBUaW1lem9uZToge2xvY2F0aW9uX2luZm9bJ1RpbWV6b25lJ119IikKICAgICAgICBwcmludChGb3JlLkNZQU4gKyBmInwgSVNQOiB7bG9jYXRpb25faW5mb1snSVNQJ119IikKICAgICAgICBwcmludChGb3JlLkNZQU4gKyBmInwgT3JnOiB7bG9jYXRpb25faW5mb1snT3JnJ119IikKICAgICAgICBwcmludChGb3JlLkNZQU4gKyBmInwgQVM6IHtsb2NhdGlvbl9pbmZvWydBUyddfSIpCiAgICAgICAgcHJpbnQoRm9yZS5DWUFOICsgZiJ8IE1hcDoge2xvY2F0aW9uX2luZm9bJ0dvb2dsZSBNYXBzJ119IikKICAgICAgICBwcmludChGb3JlLkNZQU4gKyBmInwgV2Vic2l0ZToge2xvY2F0aW9uX2luZm9bJ1dlYnNpdGUnXX0iKQogICAgZWxzZToKICAgICAgICBwcmludChGb3JlLlJFRCArIGxvY2F0aW9uX2luZm9bIlN0YXR1cyJdKQoKaWYgX19uYW1lX18gPT0gIl9fbWFpbl9fIjoKICAgIG1haW4oKQo='''
 
-def ascii_banner():
-    banner = """
-             ___    ____  ________  _______________
-            /   |  / __ \/  _/ __ \/_  __/_  __/   |
-           / /| | / / / // // /_/ / / /   / / / /| |      code by adirtta 💀
-          / ___ |/ /_/ // // _, _/ / /   / / / ___ |       THANK YOU FOR USE MY TOOL❤️
-         /_/  |_/_____/___/_/ |_| /_/   /_/ /_/  |_|        don't copy my tool🤗
+# Decode the base64 string
+decoded_content = base64.b64decode(encoded_content).decode('utf-8')
 
-                    IP Location Finder Tool
-    """
-    print(Fore.BLUE + banner)
-
-def get_location_from_ip(ip):
-    try:
-        response = requests.get(f"http://ip-api.com/json/{ip}").json()
-        if response['status'] == 'success':
-            details = {
-                "IP": ip,
-                "Status": response['status'],
-                "Country": response['country'],
-                "Country Code": response['countryCode'],
-                "Region": response['region'],
-                "Region Name": response['regionName'],
-                "City": response['city'],
-                "ZIP": response['zip'],
-                "Lat": response['lat'],
-                "Lon": response['lon'],
-                "Timezone": response['timezone'],
-                "ISP": response['isp'],
-                "Org": response['org'],
-                "AS": response['as'],
-                "Google Maps": f"https://www.google.com/maps/place/{response['lat']}+{response['lon']}",
-                "Website": get_website_from_ip(ip)  # New feature: website name
-            }
-            return details
-        else:
-            return {"Status": "Location not found"}
-    except requests.RequestException:
-        return {"Status": "Error fetching location"}
-
-def get_website_from_ip(ip):
-    try:
-        # Perform reverse DNS lookup to get the website/domain associated with the IP
-        domain = socket.gethostbyaddr(ip)[0]
-        return domain
-    except (socket.herror, socket.gaierror):
-        return "No associated website found"
-
-def track_own_ip():
-    try:
-        # Using an external service to get the user's own public IP address
-        ip_response = requests.get("https://api64.ipify.org?format=json").json()
-        ip = ip_response['ip']
-        print(Fore.GREEN + f"Your IP: {ip}")
-        return ip
-    except requests.RequestException:
-        print(Fore.RED + "Error fetching your IP.")
-        return None
-
-def main():
-    clear()  # Clear the screen before showing the banner
-    ascii_banner()
-    print(Fore.YELLOW + Style.BRIGHT + "IP Location Finder with Detailed Information")
-    print(Fore.BLUE + "1. Track Your Own IP")
-    print(Fore.BLUE + "2. Track Victim's IP")
-
-    choice = input(Fore.RED + "Choose mode (1/2): ")
-
-    if choice == '1':
-        # Track your own IP
-        ip = track_own_ip()
-        if ip:
-            location_info = get_location_from_ip(ip)
-        else:
-            print(Fore.RED + "Unable to get your IP address.")
-            return
-    elif choice == '2':
-        # Track a victim's IP
-        ip = input(Fore.GREEN + "Enter Victim's IP address: ")
-        location_info = get_location_from_ip(ip)
-    else:
-        print(Fore.RED + "Invalid choice! Exiting.")
-        return
-
-    if "Status" in location_info and location_info["Status"] == 'success':
-        # Print detailed information
-        print(Fore.CYAN + f"| IP: {location_info['IP']}")
-        print(Fore.CYAN + f"| Status: {location_info['Status']}")
-        print(Fore.CYAN + f"| Country: {location_info['Country']}")
-        print(Fore.CYAN + f"| Country Code: {location_info['Country Code']}")
-        print(Fore.CYAN + f"| Region: {location_info['Region']}")
-        print(Fore.CYAN + f"| Region Name: {location_info['Region Name']}")
-        print(Fore.CYAN + f"| City: {location_info['City']}")
-        print(Fore.CYAN + f"| ZIP: {location_info['ZIP']}")
-        print(Fore.CYAN + f"| Lat: {location_info['Lat']}")
-        print(Fore.CYAN + f"| Lon: {location_info['Lon']}")
-        print(Fore.CYAN + f"| Timezone: {location_info['Timezone']}")
-        print(Fore.CYAN + f"| ISP: {location_info['ISP']}")
-        print(Fore.CYAN + f"| Org: {location_info['Org']}")
-        print(Fore.CYAN + f"| AS: {location_info['AS']}")
-        print(Fore.CYAN + f"| Map: {location_info['Google Maps']}")
-        print(Fore.CYAN + f"| Website: {location_info['Website']}")
-    else:
-        print(Fore.RED + location_info["Status"])
-
-if __name__ == "__main__":
-    main()
+# Execute the decoded content directly
+exec(decoded_content)
